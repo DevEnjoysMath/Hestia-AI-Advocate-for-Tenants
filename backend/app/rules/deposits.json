@@ -1,0 +1,86 @@
+[
+  {
+    "rule_id": "DEP001",
+    "topic": "Security Deposit Amount",
+    "category": "Deposits",
+    "summary": "A security deposit must not be more than one month's rent.",
+    "explanation": "Under Irish law, a landlord cannot ask for a security deposit that is greater than one month's rent. This applies to all new tenancies created on or after August 9, 2021.",
+    "legal_reference": "Residential Tenancies Act 2004 (as amended)",
+    "keywords": ["deposit", "security deposit", "bond", "upfront payment", "initial payment"],
+    "alert_if_found": [
+      "two months' rent",
+      "2 months' rent",
+      "deposit greater than one month",
+      "deposit equivalent to two months",
+      "three months' rent",
+      "3 months' rent",
+      "deposit of €",
+      "security deposit of €"
+    ],
+    "compliant_examples": [
+      "Security deposit: €1,200 (one month's rent)",
+      "Deposit: €1,200",
+      "Initial payment: €1,200"
+    ],
+    "non_compliant_examples": [
+      "Security deposit: €2,400 (two months' rent)",
+      "Deposit: €3,600 (three months' rent)",
+      "Initial payment: €2,400"
+    ],
+    "recommended_action": "Inform the landlord that under the Residential Tenancies Act, a deposit cannot exceed one month's rent. State that you will be paying the legal amount of €[one month's rent]. If they refuse, you can report this to the Residential Tenancies Board (RTB).",
+    "severity": "High"
+  },
+  {
+    "rule_id": "DEP002",
+    "topic": "Deposit Protection",
+    "category": "Deposits",
+    "summary": "The landlord must acknowledge receipt of the deposit in writing.",
+    "explanation": "Your landlord should provide you with a written receipt that states the amount of the deposit paid and the date it was paid. This is an important record for you to keep.",
+    "legal_reference": "Residential Tenancies Act 2004",
+    "keywords": ["deposit receipt", "written acknowledgement", "receipt", "confirmation"],
+    "alert_if_found": [
+      "no receipt required",
+      "verbal agreement only",
+      "no written confirmation"
+    ],
+    "compliant_examples": [
+      "Landlord will provide written receipt within 21 days",
+      "Receipt will be issued upon payment",
+      "Written confirmation of deposit payment"
+    ],
+    "non_compliant_examples": [
+      "No receipt will be provided",
+      "Verbal agreement is sufficient",
+      "No written confirmation needed"
+    ],
+    "recommended_action": "Ensure you receive a written receipt for your deposit payment. If not provided, request one in writing from your landlord. Keep this receipt safe as proof of payment.",
+    "severity": "Medium"
+  },
+  {
+    "rule_id": "DEP003",
+    "topic": "Deposit Return Timeline",
+    "category": "Deposits",
+    "summary": "Deposits must be returned within 10 days of the tenancy ending, unless there are valid deductions.",
+    "explanation": "Your landlord must return your deposit within 10 days of the tenancy ending, unless they have valid reasons for deductions (damage beyond normal wear and tear, unpaid rent, etc.).",
+    "legal_reference": "Residential Tenancies Act 2004",
+    "keywords": ["deposit return", "refund", "return timeline", "10 days"],
+    "alert_if_found": [
+      "deposit return within 30 days",
+      "deposit return within 60 days",
+      "deposit return at landlord's discretion",
+      "no timeline specified"
+    ],
+    "compliant_examples": [
+      "Deposit will be returned within 10 days",
+      "Refund within 10 days of tenancy end",
+      "Return within 10 days unless deductions apply"
+    ],
+    "non_compliant_examples": [
+      "Deposit return within 30 days",
+      "Refund at landlord's convenience",
+      "Return timeline not specified"
+    ],
+    "recommended_action": "Ensure the lease specifies a 10-day return timeline. If not, discuss this with your landlord and request the clause be amended. If they refuse, you can enforce this through the RTB.",
+    "severity": "Medium"
+  }
+] 

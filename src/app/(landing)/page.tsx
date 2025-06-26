@@ -1,0 +1,109 @@
+import Link from 'next/link';
+
+export default function LandingPage() {
+  return (
+    <main>
+      {/* Hero Section */}
+      <section className="bg-gradient-to-b from-slate-50 to-white">
+        <div className="container mx-auto px-6 py-24 sm:py-32 text-center">
+          {/* Hero Icon */}
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 mx-auto text-indigo-600 mb-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+          </svg>
+          
+          {/* Main Headline */}
+          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+            Confidence in Every Clause
+          </h1>
+          
+          {/* Sub-headline */}
+          <p className="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto mb-10">
+            Hestia is your AI-powered advocate, instantly analyzing your rental lease against Irish tenancy law to find unfair clauses and give you peace of mind.
+          </p>
+          
+          {/* CTA Button */}
+          <div className="mb-6">
+            <Link href="/app" className="inline-block px-8 py-4 bg-indigo-600 text-white font-medium rounded-lg shadow-md hover:bg-indigo-700 transition duration-300 ease-in-out">
+              Analyze My Lease Now
+            </Link>
+          </div>
+          
+          {/* Trust Signal */}
+          <p className="text-sm text-slate-500">
+            Free, secure, and checked against the latest RTB guidelines.
+          </p>
+        </div>
+      </section>
+      
+      {/* Features Section */}
+      <section className="bg-white py-24 sm:py-32">
+        <div className="container mx-auto px-6">
+          {/* Section Title */}
+          <h2 className="text-3xl font-bold text-center text-gray-900 mb-16">
+            Your Advocate, From Start to Finish
+          </h2>
+          
+          {/* Features Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            {/* Feature 1: Lease Analyzer */}
+            <div className="flex flex-col items-center text-center">
+              <div className="bg-indigo-100 p-4 rounded-full mb-6">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                Instant Lease Analysis
+              </h3>
+              <p className="text-slate-600">
+                Upload your lease, and Hestia flags confusing language, illegal fees, and unfair terms in seconds.
+              </p>
+            </div>
+            
+            {/* Feature 2: Fair Rent Checker */}
+            <div className="flex flex-col items-center text-center">
+              <div className="bg-indigo-100 p-4 rounded-full mb-6">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                </svg>
+                <text x="12" y="11" textAnchor="middle" fontFamily="Inter" fontSize="6" fill="currentColor">€</text>
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                Fair Rent Checker
+              </h3>
+              <p className="text-slate-600">
+                Check if your rent complies with Rent Pressure Zone (RPZ) rules and is fair for your area.
+              </p>
+            </div>
+            
+            {/* Feature 3: Deposit Dispute Prep */}
+            <div className="flex flex-col items-center text-center">
+              <div className="bg-indigo-100 p-4 rounded-full mb-6">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM18.75 10.5h.008v.008h-.008V10.5z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                Deposit Dispute Prep Kit
+              </h3>
+              <p className="text-slate-600">
+                Use AI image analysis to differentiate 'normal wear and tear' from actual damage and build your case.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Footer */}
+      <footer className="bg-slate-50 py-8">
+        <div className="container mx-auto px-6 text-center">
+          <p className="text-sm text-slate-500">
+            © 2025 Hestia. All rights reserved. Helping Irish tenants understand their rights.
+          </p>
+        </div>
+      </footer>
+    </main>
+  );
+} 

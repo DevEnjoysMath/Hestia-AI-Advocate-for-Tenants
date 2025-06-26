@@ -1,0 +1,14 @@
+# Node
+.next/
+node_modules/
+.env
+.env.*
+*.env
+# Python
+backend/venv/
+backend/.env
+backend/.env.*
+*.pyc
+__pycache__/
+hestia.log
+

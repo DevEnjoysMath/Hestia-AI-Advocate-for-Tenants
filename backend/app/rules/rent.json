@@ -1,0 +1,111 @@
+[
+  {
+    "rule_id": "RENT001",
+    "topic": "Rent Pressure Zone (RPZ) Rules",
+    "category": "Rent",
+    "summary": "In Rent Pressure Zones, rent can only increase by a maximum of 2% per year or HICP inflation, whichever is lower.",
+    "explanation": "Rent Pressure Zones are areas where rent increases are capped. The maximum annual increase is 2% or the rate of inflation (HICP), whichever is lower. Rent can only be reviewed once every 12 months.",
+    "legal_reference": "Residential Tenancies Act 2004 (as amended by Planning and Development (Housing) and Residential Tenancies Act 2016)",
+    "keywords": ["rent increase", "rent pressure zone", "rpz", "2%", "inflation", "hicp", "annual increase"],
+    "alert_if_found": [
+      "rent increase greater than 2%",
+      "rent increase above inflation",
+      "rent review more than once per year",
+      "rent increase at landlord's discretion",
+      "unlimited rent increases"
+    ],
+    "compliant_examples": [
+      "Rent may increase by maximum 2% annually",
+      "Rent review once per 12 months",
+      "Increase limited to HICP or 2%, whichever is lower"
+    ],
+    "non_compliant_examples": [
+      "Rent may increase by 5% annually",
+      "Rent review every 6 months",
+      "Unlimited rent increases permitted"
+    ],
+    "recommended_action": "If you're in a Rent Pressure Zone and the lease allows increases above 2% or more frequent reviews, inform your landlord this violates RPZ rules. If they proceed with an illegal increase, you can challenge it through the RTB.",
+    "severity": "High"
+  },
+  {
+    "rule_id": "RENT002",
+    "topic": "Rent Increase Notice Period",
+    "category": "Rent",
+    "summary": "Landlords must provide 90 days' notice before increasing rent.",
+    "explanation": "Your landlord must give you at least 90 days' written notice before increasing your rent. This gives you time to consider the increase and potentially negotiate or find alternative accommodation.",
+    "legal_reference": "Residential Tenancies Act 2004",
+    "keywords": ["rent increase notice", "90 days", "notice period", "written notice"],
+    "alert_if_found": [
+      "rent increase with 30 days notice",
+      "rent increase with 60 days notice",
+      "immediate rent increase",
+      "no notice period specified"
+    ],
+    "compliant_examples": [
+      "90 days' notice required for rent increase",
+      "Rent increase with 90 days' written notice",
+      "Three months' notice for rent changes"
+    ],
+    "non_compliant_examples": [
+      "Rent increase with 30 days' notice",
+      "Immediate rent increase permitted",
+      "No notice period required"
+    ],
+    "recommended_action": "Ensure the lease specifies a 90-day notice period for rent increases. If not, discuss this with your landlord and request the clause be amended. If they refuse, you can enforce this through the RTB.",
+    "severity": "High"
+  },
+  {
+    "rule_id": "RENT003",
+    "topic": "Rent Payment Methods",
+    "category": "Rent",
+    "summary": "Rent should be paid by a method that provides a clear record of payment.",
+    "explanation": "It's important to pay rent by a method that provides a clear record, such as bank transfer, standing order, or cheque. This helps protect you in case of disputes about rent payments.",
+    "legal_reference": "Residential Tenancies Act 2004",
+    "keywords": ["rent payment", "bank transfer", "standing order", "cheque", "cash payment"],
+    "alert_if_found": [
+      "rent paid in cash only",
+      "no payment records required",
+      "cash payment preferred",
+      "no receipt for rent"
+    ],
+    "compliant_examples": [
+      "Rent paid by bank transfer",
+      "Standing order for rent payment",
+      "Cheque payment with receipt"
+    ],
+    "non_compliant_examples": [
+      "Cash payment only accepted",
+      "No payment records provided",
+      "Cash preferred over bank transfer"
+    ],
+    "recommended_action": "Ensure you have a clear record of all rent payments. If the lease requires cash payments, discuss alternative payment methods with your landlord. Always keep receipts or bank statements as proof of payment.",
+    "severity": "Medium"
+  },
+  {
+    "rule_id": "RENT004",
+    "topic": "Rent Arrears and Late Payment",
+    "category": "Rent",
+    "summary": "Late rent payments can result in termination of the tenancy, but landlords must follow proper procedures.",
+    "explanation": "If you fall behind on rent, your landlord can take steps to terminate the tenancy, but they must follow proper legal procedures and give you reasonable time to pay the arrears.",
+    "legal_reference": "Residential Tenancies Act 2004",
+    "keywords": ["rent arrears", "late payment", "termination", "eviction", "notice period"],
+    "alert_if_found": [
+      "immediate termination for late payment",
+      "no grace period for arrears",
+      "eviction without notice",
+      "immediate eviction for non-payment"
+    ],
+    "compliant_examples": [
+      "14 days' notice for rent arrears",
+      "Reasonable time to pay arrears",
+      "Proper termination procedures followed"
+    ],
+    "non_compliant_examples": [
+      "Immediate termination for late payment",
+      "No grace period for arrears",
+      "Eviction without proper notice"
+    ],
+    "recommended_action": "If the lease allows immediate termination for late payment, discuss this with your landlord and request a reasonable grace period be included. If they refuse, you can challenge this through the RTB.",
+    "severity": "High"
+  }
+] 

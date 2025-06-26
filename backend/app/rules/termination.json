@@ -1,0 +1,112 @@
+[
+  {
+    "rule_id": "TERM001",
+    "topic": "Tenancy Termination Notice Periods",
+    "category": "Termination",
+    "summary": "Specific notice periods apply depending on how long you've been renting and who is terminating the tenancy.",
+    "explanation": "The notice period depends on how long you've been renting. For tenancies of less than 6 months, 28 days' notice is required. For 6 months to 1 year, 35 days. For 1-2 years, 42 days. For 2-3 years, 56 days. For 3-4 years, 84 days. For 4-5 years, 112 days. For 5+ years, 140 days.",
+    "legal_reference": "Residential Tenancies Act 2004",
+    "keywords": ["termination", "notice period", "eviction", "end tenancy", "notice to quit"],
+    "alert_if_found": [
+      "immediate termination",
+      "no notice period",
+      "termination without notice",
+      "eviction without notice",
+      "termination at landlord's discretion"
+    ],
+    "compliant_examples": [
+      "28 days' notice required for termination",
+      "Proper notice period as per legislation",
+      "Termination with appropriate notice"
+    ],
+    "non_compliant_examples": [
+      "Immediate termination permitted",
+      "No notice period required",
+      "Termination at any time"
+    ],
+    "recommended_action": "Ensure the lease specifies the correct notice period based on your tenancy duration. If it allows immediate termination, discuss this with your landlord and request the clause be amended. If they refuse, you can challenge this through the RTB.",
+    "severity": "High"
+  },
+  {
+    "rule_id": "TERM002",
+    "topic": "Landlord Access Rights",
+    "category": "Access",
+    "summary": "Landlords have limited rights to access the property and must give reasonable notice.",
+    "explanation": "Your landlord can only enter the property for specific reasons (repairs, inspections, showing to prospective tenants) and must give you reasonable notice (usually 24 hours). They cannot enter without your permission except in emergencies.",
+    "legal_reference": "Residential Tenancies Act 2004",
+    "keywords": ["landlord access", "entry rights", "inspection", "repairs", "notice", "privacy"],
+    "alert_if_found": [
+      "landlord can enter at any time",
+      "no notice required for entry",
+      "landlord has unlimited access",
+      "entry without permission",
+      "24/7 access for landlord"
+    ],
+    "compliant_examples": [
+      "24 hours' notice required for entry",
+      "Access only for repairs and inspections",
+      "Reasonable notice for landlord visits"
+    ],
+    "non_compliant_examples": [
+      "Landlord can enter at any time",
+      "No notice required for access",
+      "Unlimited access for landlord"
+    ],
+    "recommended_action": "Your landlord cannot enter your home without permission except in an emergency. You can politely refuse entry if they show up without giving at least 24 hours' notice. If they persist, contact the RTB.",
+    "severity": "High"
+  },
+  {
+    "rule_id": "TERM003",
+    "topic": "Tenant's Right to Quiet Enjoyment",
+    "category": "Access",
+    "summary": "You have the right to quiet enjoyment of the property without unreasonable interference.",
+    "explanation": "You have the right to live in the property without unreasonable interference from your landlord. This includes the right to privacy and to use the property as your home.",
+    "legal_reference": "Residential Tenancies Act 2004",
+    "keywords": ["quiet enjoyment", "privacy", "interference", "peaceful occupation"],
+    "alert_if_found": [
+      "landlord can interfere with quiet enjoyment",
+      "no right to privacy",
+      "landlord can enter without reason",
+      "unlimited landlord interference"
+    ],
+    "compliant_examples": [
+      "Tenant has right to quiet enjoyment",
+      "Respect for tenant privacy",
+      "No unreasonable interference"
+    ],
+    "non_compliant_examples": [
+      "Landlord can interfere with quiet enjoyment",
+      "No right to privacy guaranteed",
+      "Unlimited landlord access"
+    ],
+    "recommended_action": "Ensure the lease respects your right to quiet enjoyment and privacy. If it allows unreasonable interference, discuss this with your landlord. Document any interference and contact the RTB if it continues.",
+    "severity": "Medium"
+  },
+  {
+    "rule_id": "TERM004",
+    "topic": "Termination for Breach of Tenancy",
+    "category": "Termination",
+    "summary": "Tenancies can be terminated for serious breaches, but proper procedures must be followed.",
+    "explanation": "A tenancy can be terminated for serious breaches like non-payment of rent, anti-social behavior, or damage to the property. However, proper notice and procedures must be followed.",
+    "legal_reference": "Residential Tenancies Act 2004",
+    "keywords": ["breach", "termination", "anti-social behavior", "damage", "non-payment"],
+    "alert_if_found": [
+      "termination for minor breaches",
+      "immediate termination for any breach",
+      "termination without proper procedures",
+      "eviction for trivial reasons"
+    ],
+    "compliant_examples": [
+      "Termination only for serious breaches",
+      "Proper procedures for breach termination",
+      "Reasonable opportunity to remedy breach"
+    ],
+    "non_compliant_examples": [
+      "Termination for minor breaches",
+      "Immediate termination for any breach",
+      "No opportunity to remedy breach"
+    ],
+    "recommended_action": "Ensure the lease only allows termination for serious breaches and includes proper procedures. If it allows termination for minor issues, discuss this with your landlord and request the clause be amended.",
+    "severity": "High"
+  }
+] 

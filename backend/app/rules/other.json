@@ -1,0 +1,107 @@
+[
+  {
+    "rule_id": "OTH001",
+    "topic": "Guest Restrictions",
+    "category": "Other",
+    "summary": "Reasonable guest visits are generally allowed, but excessive or long-term guests may be restricted.",
+    "explanation": "You generally have the right to have reasonable guests visit your home. However, landlords can restrict long-term guests or excessive numbers of visitors that might cause disturbance or wear and tear.",
+    "legal_reference": "Residential Tenancies Act 2004",
+    "keywords": ["guests", "visitors", "overnight guests", "long-term guests", "subletting"],
+    "alert_if_found": [
+      "no guests allowed",
+      "no overnight guests",
+      "guests must be approved",
+      "no visitors without permission",
+      "complete guest ban"
+    ],
+    "compliant_examples": [
+      "Reasonable guest visits permitted",
+      "Overnight guests allowed occasionally",
+      "Guests must not cause disturbance"
+    ],
+    "non_compliant_examples": [
+      "No guests allowed at any time",
+      "All guests must be pre-approved",
+      "No overnight visitors permitted"
+    ],
+    "recommended_action": "If the lease completely bans guests, discuss this with your landlord. Reasonable guest visits should be allowed. If they refuse to amend the clause, you can challenge this through the RTB.",
+    "severity": "Medium"
+  },
+  {
+    "rule_id": "OTH002",
+    "topic": "Pet Restrictions",
+    "category": "Other",
+    "summary": "Pet restrictions are generally enforceable, but must be reasonable and clearly stated.",
+    "explanation": "Landlords can restrict pets in rental properties, but the restrictions must be reasonable and clearly stated in the lease. Some properties may have building management rules about pets.",
+    "legal_reference": "Residential Tenancies Act 2004",
+    "keywords": ["pets", "dogs", "cats", "animals", "pet policy"],
+    "alert_if_found": [
+      "no pets without written permission",
+      "pets must be approved",
+      "pet restrictions apply"
+    ],
+    "compliant_examples": [
+      "No pets allowed",
+      "Pets by written permission only",
+      "Pet policy as per building rules"
+    ],
+    "non_compliant_examples": [
+      "Pets allowed without restriction",
+      "No pet policy stated"
+    ],
+    "recommended_action": "If you have or plan to have pets, ensure the lease clearly states the pet policy. If pets are allowed, get written permission and keep a copy. If the policy is unclear, ask for clarification.",
+    "severity": "Medium"
+  },
+  {
+    "rule_id": "OTH003",
+    "topic": "Subletting and Assignment",
+    "category": "Other",
+    "summary": "Subletting is generally not allowed without landlord permission, but assignment may be permitted.",
+    "explanation": "You cannot sublet the property (rent it to someone else) without your landlord's written permission. However, you may be able to assign the lease (transfer it to someone else) in certain circumstances.",
+    "legal_reference": "Residential Tenancies Act 2004",
+    "keywords": ["subletting", "assignment", "transfer", "subtenant", "lease transfer"],
+    "alert_if_found": [
+      "subletting permitted without permission",
+      "free assignment of lease",
+      "no restrictions on subletting"
+    ],
+    "compliant_examples": [
+      "No subletting without written permission",
+      "Assignment with landlord approval",
+      "Subletting strictly prohibited"
+    ],
+    "non_compliant_examples": [
+      "Subletting allowed without restriction",
+      "Free assignment of lease",
+      "No subletting policy stated"
+    ],
+    "recommended_action": "If you need to sublet or assign the lease, always get written permission from your landlord first. Keep copies of all correspondence about this matter.",
+    "severity": "Medium"
+  },
+  {
+    "rule_id": "OTH004",
+    "topic": "Utility Bills and Services",
+    "category": "Other",
+    "summary": "The lease should clearly specify who is responsible for utility bills and services.",
+    "explanation": "The lease should clearly state who is responsible for paying utility bills (electricity, gas, water, internet, etc.) and whether these are included in the rent or separate.",
+    "legal_reference": "Residential Tenancies Act 2004",
+    "keywords": ["utilities", "bills", "electricity", "gas", "water", "internet", "included"],
+    "alert_if_found": [
+      "utilities not specified",
+      "unclear bill responsibility",
+      "no mention of utility costs"
+    ],
+    "compliant_examples": [
+      "Tenant responsible for all utilities",
+      "Electricity and gas included in rent",
+      "Water included, other utilities separate"
+    ],
+    "non_compliant_examples": [
+      "Utilities not mentioned",
+      "Unclear who pays for services",
+      "No utility policy stated"
+    ],
+    "recommended_action": "Ensure the lease clearly specifies which utilities are included in the rent and which you must pay separately. If unclear, ask your landlord for clarification in writing.",
+    "severity": "Low"
+  }
+] 

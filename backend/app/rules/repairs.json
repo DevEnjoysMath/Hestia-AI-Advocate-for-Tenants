@@ -1,0 +1,109 @@
+[
+  {
+    "rule_id": "REP001",
+    "topic": "Landlord's Responsibility for Repairs",
+    "category": "Repairs",
+    "summary": "The landlord is responsible for keeping the property in a good state of repair.",
+    "explanation": "Your landlord must maintain the structure of the building, including the roof, walls, floors, and windows. They are also responsible for utilities like plumbing, gas, and electricity, as well as heating systems.",
+    "legal_reference": "Section 12(1)(b) of the Residential Tenancies Act 2004",
+    "keywords": ["repairs", "maintenance", "structure", "heating", "plumbing", "electrical", "utilities"],
+    "alert_if_found": [
+      "tenant is responsible for all repairs",
+      "tenant pays for structural repairs",
+      "tenant maintains all systems",
+      "tenant responsible for heating repairs",
+      "tenant pays for plumbing repairs"
+    ],
+    "compliant_examples": [
+      "Landlord is responsible for structural repairs",
+      "Landlord maintains heating and plumbing systems",
+      "Landlord repairs electrical systems"
+    ],
+    "non_compliant_examples": [
+      "Tenant is responsible for all repairs",
+      "Tenant pays for structural maintenance",
+      "Tenant maintains heating system"
+    ],
+    "recommended_action": "Be aware this clause is unenforceable. You are not responsible for fixing the boiler, leaking pipes, or structural issues. Report all such problems to your landlord in writing. If they refuse to repair, you can contact the RTB.",
+    "severity": "High"
+  },
+  {
+    "rule_id": "REP002",
+    "topic": "Reporting Repairs",
+    "category": "Repairs",
+    "summary": "You should inform your landlord of any required repairs in writing.",
+    "explanation": "When a repair is needed, you should notify your landlord or their agent as soon as possible. It is best to do this in writing (e.g., by email) so you have a record of when you reported the issue.",
+    "legal_reference": "Residential Tenancies Act 2004",
+    "keywords": ["notify", "report", "inform", "in writing", "repair request"],
+    "alert_if_found": [
+      "repairs must be reported verbally only",
+      "no written notification required",
+      "repairs reported at tenant's discretion"
+    ],
+    "compliant_examples": [
+      "Tenant must notify landlord in writing of required repairs",
+      "Repair requests should be submitted in writing",
+      "Written notification of maintenance issues required"
+    ],
+    "non_compliant_examples": [
+      "Repairs reported verbally only",
+      "No written notification needed",
+      "Repairs reported when convenient"
+    ],
+    "recommended_action": "Always report repairs in writing (email or letter) and keep copies. This creates a record if the landlord doesn't respond. Send follow-up emails if repairs aren't done within a reasonable time.",
+    "severity": "Low"
+  },
+  {
+    "rule_id": "REP003",
+    "topic": "Emergency Repairs",
+    "category": "Repairs",
+    "summary": "Emergency repairs must be addressed immediately by the landlord.",
+    "explanation": "Emergency repairs (like burst pipes, electrical faults, or heating failures in winter) must be addressed immediately by the landlord. You should contact them immediately for such issues.",
+    "legal_reference": "Residential Tenancies Act 2004",
+    "keywords": ["emergency", "urgent", "immediate", "burst pipe", "electrical fault", "heating failure"],
+    "alert_if_found": [
+      "emergency repairs at tenant's expense",
+      "tenant pays for emergency repairs",
+      "emergency repairs not covered",
+      "24-hour response not guaranteed"
+    ],
+    "compliant_examples": [
+      "Emergency repairs will be addressed immediately",
+      "24-hour emergency contact provided",
+      "Landlord responsible for emergency repairs"
+    ],
+    "non_compliant_examples": [
+      "Emergency repairs at tenant's cost",
+      "No emergency repair coverage",
+      "Emergency response not guaranteed"
+    ],
+    "recommended_action": "Ensure the lease provides clear emergency contact information and confirms the landlord's responsibility for emergency repairs. If not, request this information in writing.",
+    "severity": "High"
+  },
+  {
+    "rule_id": "REP004",
+    "topic": "Tenant's Responsibility for Minor Maintenance",
+    "category": "Repairs",
+    "summary": "Tenants are responsible for minor maintenance and keeping the property clean.",
+    "explanation": "While landlords are responsible for structural repairs, tenants are responsible for keeping the property clean and carrying out minor maintenance like changing light bulbs or unblocking drains caused by normal use.",
+    "legal_reference": "Residential Tenancies Act 2004",
+    "keywords": ["minor maintenance", "cleaning", "light bulbs", "drains", "normal use"],
+    "alert_if_found": [
+      "tenant responsible for all maintenance",
+      "tenant pays for all repairs",
+      "tenant maintains everything"
+    ],
+    "compliant_examples": [
+      "Tenant responsible for minor maintenance",
+      "Tenant keeps property clean",
+      "Tenant changes light bulbs"
+    ],
+    "non_compliant_examples": [
+      "Tenant responsible for all maintenance",
+      "Tenant pays for structural repairs",
+      "Tenant maintains all systems"
+    ],
+    "recommended_action": "Ensure the lease clearly distinguishes between landlord responsibilities (structural repairs) and tenant responsibilities (minor maintenance and cleaning). If unclear, ask for clarification in writing.",
+    "severity": "Medium"
+  }
+] 
