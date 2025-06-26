@@ -1,0 +1,146 @@
+[
+  {
+    "rule_id": "MISS001",
+    "topic": "Landlord Repair Contact",
+    "category": "Missing Clause",
+    "summary": "The lease should provide specific contact details for repair emergencies.",
+    "explanation": "Your lease should include contact information for reporting repairs, especially for emergencies. Without this, you might not know who to contact when urgent issues arise.",
+    "legal_reference": "Housing (Standards for Rented Houses) Regulations 2019",
+    "legal_url": "https://www.rtb.ie/beginning-a-tenancy/what-minimum-standards-must-a-property-meet",
+    "keywords": ["repair contact", "emergency contact", "maintenance contact", "landlord contact"],
+    "alert_if_missing": [
+      "emergency contact",
+      "repair contact",
+      "maintenance number",
+      "landlord phone",
+      "agent contact"
+    ],
+    "compliant_examples": [
+      "For emergency repairs, contact the landlord at 01-123-4567",
+      "Maintenance issues should be reported to maintenance@property.com",
+      "For urgent repairs, call the property manager at the number provided"
+    ],
+    "non_compliant_examples": [
+      "No repair contact information provided",
+      "No emergency contact details",
+      "No mention of how to report maintenance issues"
+    ],
+    "recommended_action": "Ask your landlord to provide specific contact information for reporting repairs and emergencies. Get this in writing as an addendum to your lease.",
+    "severity": "High"
+  },
+  {
+    "rule_id": "MISS002",
+    "topic": "RTB Registration Mention",
+    "category": "Missing Clause",
+    "summary": "The lease should mention the landlord's obligation to register the tenancy with the RTB.",
+    "explanation": "All private residential tenancies must be registered with the Residential Tenancies Board (RTB). Your lease should acknowledge this legal requirement.",
+    "legal_reference": "Residential Tenancies Act 2004, Section 134",
+    "legal_url": "https://www.rtb.ie/register-a-tenancy/landlord-registration-requirements",
+    "keywords": ["RTB registration", "tenancy registration", "registered with RTB", "Residential Tenancies Board"],
+    "alert_if_missing": [
+      "RTB registration",
+      "tenancy registration",
+      "Residential Tenancies Board",
+      "register with RTB"
+    ],
+    "compliant_examples": [
+      "This tenancy will be registered with the RTB as required by law",
+      "The landlord will register this tenancy with the Residential Tenancies Board",
+      "This tenancy is subject to registration under the Residential Tenancies Act"
+    ],
+    "non_compliant_examples": [
+      "No mention of RTB registration",
+      "No reference to the Residential Tenancies Board",
+      "No acknowledgment of registration requirements"
+    ],
+    "recommended_action": "Ask your landlord to confirm in writing that the tenancy will be registered with the RTB. You can verify registration by requesting the RTB registration number or checking directly with the RTB.",
+    "severity": "Medium"
+  },
+  {
+    "rule_id": "MISS003",
+    "topic": "Peaceful Occupation",
+    "category": "Missing Clause",
+    "summary": "The lease should guarantee your right to quiet and peaceful enjoyment of the property.",
+    "explanation": "You have a legal right to quiet and peaceful enjoyment of your rented home without unreasonable interference from the landlord. This right should be acknowledged in your lease.",
+    "legal_reference": "Residential Tenancies Act 2004, Section 12",
+    "legal_url": "https://www.rtb.ie/during-a-tenancy/rights-and-responsibilities-in-a-tenancy",
+    "keywords": ["quiet enjoyment", "peaceful occupation", "peaceful enjoyment", "privacy", "undisturbed"],
+    "alert_if_missing": [
+      "quiet enjoyment",
+      "peaceful occupation",
+      "peaceful enjoyment",
+      "privacy rights",
+      "undisturbed use"
+    ],
+    "compliant_examples": [
+      "The tenant has the right to peaceful and exclusive occupation of the property",
+      "The landlord guarantees the tenant's right to quiet enjoyment of the premises",
+      "The tenant shall have peaceful enjoyment of the dwelling without interference"
+    ],
+    "non_compliant_examples": [
+      "No mention of peaceful enjoyment",
+      "No reference to tenant's right to privacy",
+      "No acknowledgment of undisturbed occupation"
+    ],
+    "recommended_action": "Request that your landlord add a clause acknowledging your right to quiet and peaceful enjoyment. Even if not explicitly stated, this right is protected by law under the Residential Tenancies Act.",
+    "severity": "Medium"
+  },
+  {
+    "rule_id": "MISS004",
+    "topic": "Rent Review Clause",
+    "category": "Missing Clause",
+    "summary": "The lease should specify how and when rent may be reviewed or increased.",
+    "explanation": "Your lease should clearly state the conditions under which rent may be increased, including the notice period required (minimum 90 days) and frequency limitations (no more than once every 12 months).",
+    "legal_reference": "Residential Tenancies Act 2004, as amended",
+    "legal_url": "https://www.rtb.ie/during-a-tenancy/rent-reviews",
+    "keywords": ["rent review", "rent increase", "rent change", "notice period", "rent adjustment"],
+    "alert_if_missing": [
+      "rent review",
+      "rent increase",
+      "rent adjustment",
+      "notice period for rent",
+      "rent change conditions"
+    ],
+    "compliant_examples": [
+      "Rent may be reviewed once every 12 months with 90 days' written notice",
+      "Any rent increase will be communicated with at least 90 days' notice",
+      "Rent reviews will follow RTB guidelines and provide required notice"
+    ],
+    "non_compliant_examples": [
+      "No mention of rent review process",
+      "No reference to notice period for rent increases",
+      "No information about frequency of rent reviews"
+    ],
+    "recommended_action": "Ask your landlord to include clear terms about rent reviews, including the legally required 90-day notice period and 12-month minimum between increases. Note that these protections apply even if not explicitly stated in your lease.",
+    "severity": "High"
+  },
+  {
+    "rule_id": "MISS005",
+    "topic": "Inventory and Condition Report",
+    "category": "Missing Clause",
+    "summary": "The lease should reference an inventory and condition report of the property.",
+    "explanation": "A detailed inventory and condition report documents the state of the property and its contents at the start of your tenancy. This helps prevent disputes about damage and deposit deductions when you move out.",
+    "legal_reference": "Best practice under Residential Tenancies Act 2004",
+    "legal_url": "https://www.rtb.ie/beginning-a-tenancy/deposits-and-guarantee-schemes",
+    "keywords": ["inventory", "condition report", "property condition", "check-in report", "move-in condition"],
+    "alert_if_missing": [
+      "inventory",
+      "condition report",
+      "property condition",
+      "check-in report",
+      "state of property"
+    ],
+    "compliant_examples": [
+      "An inventory and condition report will be completed and signed by both parties",
+      "The condition of the property is documented in the attached inventory report",
+      "A detailed inventory forms part of this agreement"
+    ],
+    "non_compliant_examples": [
+      "No mention of inventory",
+      "No reference to property condition documentation",
+      "No check-in report mentioned"
+    ],
+    "recommended_action": "Request a detailed inventory and condition report before moving in. Take photos of the property condition and any existing damage. Have the landlord sign and date this report to avoid future disputes about the property's original condition.",
+    "severity": "Medium"
+  }
+] 

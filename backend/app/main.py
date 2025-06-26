@@ -7,6 +7,8 @@ import io
 from werkzeug.utils import secure_filename
 import logging
 import glob
+import re
+import traceback
 
 from . import app
 from .config import settings
@@ -146,6 +148,10 @@ def load_knowledge_base() -> list:
                     if missing_fields:
                         logger.warning(f"Rule {rule.get('rule_id', i)} in {file_path} missing required fields: {missing_fields}")
                         continue
+                    
+                    # Add legal_url field if it doesn't exist (for backward compatibility)
+                    if 'legal_url' not in rule:
+                        rule['legal_url'] = ""
                     
                     valid_rules.append(rule)
                 
@@ -377,6 +383,9 @@ def analyze_lease():
                         "partial_result": analysis
                     }), 500
                 
+                # Check for missing clauses
+                analysis = check_for_missing_clauses(analysis, lease_text, load_knowledge_base())
+                
                 return jsonify(analysis)
             except json.JSONDecodeError as json_err:
                 logger.error(f"JSON parsing error: {str(json_err)}")
@@ -405,6 +414,46 @@ def analyze_lease():
     except Exception as e:
         logger.error(f"Unexpected error in lease analysis: {str(e)}")
         return jsonify({"error": "An unexpected error occurred. Please try again or contact support."}), 500
+
+def check_for_missing_clauses(result: dict, lease_text: str, knowledge_base: list) -> dict:
+    """
+    Check for important clauses that should be in a lease but are missing.
+    
+    Args:
+        result (dict): The current analysis result.
+        lease_text (str): The text of the lease agreement.
+        knowledge_base (list): List of rules to use for analysis.
+        
+    Returns:
+        dict: The updated analysis result with missing clauses.
+    """
+    # Initialize missing_clauses if it doesn't exist
+    if "missing_clauses" not in result:
+        result["missing_clauses"] = []
+    
+    # Get rules that have alert_if_missing field
+    missing_clause_rules = [rule for rule in knowledge_base if "alert_if_missing" in rule]
+    
+    # Check each rule for missing clauses
+    for rule in missing_clause_rules:
+        # Check if any of the keywords are present in the lease text
+        keywords_present = any(keyword.lower() in lease_text.lower() for keyword in rule.get("alert_if_missing", []))
+        
+        # If none of the keywords are present, this clause is missing
+        if not keywords_present:
+            # Create a missing clause alert
+            missing_clause = {
+                "rule_id": rule.get("rule_id", ""),
+                "title": f"Missing: {rule.get('topic', '')}",
+                "explanation": rule.get("explanation", ""),
+                "severity": rule.get("severity", "Medium"),
+                "recommendation": rule.get("recommended_action", ""),
+                "legal_url": rule.get("legal_url", "")
+            }
+            
+            result["missing_clauses"].append(missing_clause)
+    
+    return result
 
 @app.route('/api/check-rent', methods=['POST'])
 def check_rent():

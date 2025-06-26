@@ -24,6 +24,16 @@ interface Alert {
   explanation: string;
   severity: string;
   recommendation: string;
+  legal_url?: string;
+}
+
+interface MissingClause {
+  rule_id: string;
+  title: string;
+  explanation: string;
+  severity: string;
+  recommendation: string;
+  legal_url?: string;
 }
 
 interface GoodToKnow {
@@ -34,6 +44,7 @@ interface GoodToKnow {
 interface AnalysisResult {
   key_terms: KeyTerms;
   alerts: Alert[];
+  missing_clauses?: MissingClause[];
   good_to_know: GoodToKnow[];
 }
 
@@ -41,7 +52,7 @@ export default function AppPage() {
   const [isUploading, setIsUploading] = useState(false);
   const [result, setResult] = useState<AnalysisResult | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [activeSection, setActiveSection] = useState<'key_terms' | 'alerts' | 'good_to_know'>('key_terms');
+  const [activeSection, setActiveSection] = useState<'key_terms' | 'alerts' | 'missing_clauses' | 'good_to_know'>('key_terms');
   const [activeFeature, setActiveFeature] = useState<'lease_analyzer' | 'rent_checker' | 'repair_assistant' | 'deposit_dispute'>('lease_analyzer');
 
   const handleFileUpload = async (file: File) => {
@@ -89,6 +100,11 @@ export default function AppPage() {
       if (data.key_terms && Array.isArray(data.alerts) && Array.isArray(data.good_to_know)) {
         // The response is already in the expected format
         validatedResult = data as AnalysisResult;
+        
+        // Ensure missing_clauses exists (might be undefined in older responses)
+        if (!validatedResult.missing_clauses) {
+          validatedResult.missing_clauses = [];
+        }
       } else {
         // Try to adapt the response to our expected format
         console.log('Adapting response structure:', data);
@@ -97,6 +113,7 @@ export default function AppPage() {
         validatedResult = {
           key_terms: {},
           alerts: [],
+          missing_clauses: [],
           good_to_know: []
         };
         
@@ -121,6 +138,14 @@ export default function AppPage() {
           validatedResult.alerts = [data.alerts];
         }
         
+        // Try to extract missing_clauses if available
+        if (Array.isArray(data.missing_clauses)) {
+          validatedResult.missing_clauses = data.missing_clauses;
+        } else if (data.missing_clauses && typeof data.missing_clauses === 'object') {
+          // Convert object to array if needed
+          validatedResult.missing_clauses = [data.missing_clauses];
+        }
+        
         // Try to extract good_to_know if available
         if (Array.isArray(data.good_to_know)) {
           validatedResult.good_to_know = data.good_to_know;
@@ -134,6 +159,7 @@ export default function AppPage() {
       const isResultEmpty = 
         Object.keys(validatedResult.key_terms).length === 0 && 
         validatedResult.alerts.length === 0 && 
+        (validatedResult.missing_clauses?.length || 0) === 0 && 
         validatedResult.good_to_know.length === 0;
       
       if (isResultEmpty) {
@@ -143,6 +169,7 @@ export default function AppPage() {
             "note": "We couldn't extract specific details from your lease"
           },
           alerts: [],
+          missing_clauses: [],
           good_to_know: [{
             title: "PDF Text Extraction Issue",
             explanation: "We couldn't extract specific details from your lease agreement. This could be because the PDF contains scanned images of text rather than actual text content, or the format is not recognized. For best results, please upload a PDF with selectable text content rather than scanned images."
@@ -273,6 +300,21 @@ export default function AppPage() {
                   </span>
                 </div>
               )}
+              {alert.legal_url && (
+                <div className="mt-2">
+                  <a 
+                    href={alert.legal_url} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-sm text-indigo-600 hover:text-indigo-800 hover:underline flex items-center"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                    View legal source
+                  </a>
+                </div>
+              )}
             </div>
           </div>
         </motion.div>
@@ -286,6 +328,100 @@ export default function AppPage() {
           <CheckCircle className="h-14 w-14 text-green-500 mx-auto mb-4" />
           <p className="text-green-800 font-medium text-lg">No issues found in your lease!</p>
           <p className="text-green-600 mt-2">Your agreement appears to comply with Irish tenancy laws.</p>
+        </motion.div>
+      )}
+    </motion.div>
+  );
+
+  // Component for displaying missing clauses
+  const MissingClausesSection = ({ missingClauses }: { missingClauses?: MissingClause[] }) => (
+    <motion.div 
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="space-y-5"
+    >
+      {missingClauses && missingClauses.length > 0 && (
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="bg-indigo-50 p-4 rounded-lg border border-indigo-100 mb-2"
+        >
+          <div className="flex items-start">
+            <Info className="h-5 w-5 text-indigo-600 mt-0.5 mr-3 flex-shrink-0" />
+            <p className="text-sm text-indigo-700">
+              These are important clauses that should be in your lease but appear to be missing. 
+              The absence of these clauses could affect your rights or lead to misunderstandings.
+            </p>
+          </div>
+        </motion.div>
+      )}
+      
+      {missingClauses && missingClauses.map((clause, index) => (
+        <motion.div 
+          key={index}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3, delay: index * 0.05 }}
+          whileHover={{ scale: 1.01, boxShadow: '0 4px 12px rgba(0,0,0,0.05)' }}
+          className="bg-purple-50 border-l-4 border-purple-400 p-5 rounded-lg transition-all duration-200"
+        >
+          <div className="flex items-start">
+            <div className="flex-shrink-0">
+              <AlertCircle className="h-5 w-5 text-purple-500" />
+            </div>
+            <div className="ml-3">
+              <h3 className="text-sm font-medium text-purple-800">{clause.title}</h3>
+              <div className="mt-2 text-sm text-purple-700">
+                <p>{clause.explanation}</p>
+              </div>
+              <div className="mt-2 text-xs text-purple-600 bg-purple-100 px-2 py-1 rounded-md inline-block">
+                <p>Reference: {clause.rule_id}</p>
+              </div>
+              {clause.recommendation && (
+                <div className="mt-3 text-sm text-purple-700 bg-purple-50 p-2 border border-purple-200 rounded">
+                  <strong>Recommended action:</strong> {clause.recommendation}
+                </div>
+              )}
+              {clause.severity && (
+                <div className="mt-2 text-xs inline-flex items-center">
+                  <span className={`px-2 py-1 rounded-full ${
+                    clause.severity === 'High' ? 'bg-red-100 text-red-800' : 
+                    clause.severity === 'Medium' ? 'bg-orange-100 text-orange-800' : 
+                    'bg-yellow-100 text-yellow-800'
+                  }`}>
+                    {clause.severity} severity
+                  </span>
+                </div>
+              )}
+              {clause.legal_url && (
+                <div className="mt-2">
+                  <a 
+                    href={clause.legal_url} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-sm text-indigo-600 hover:text-indigo-800 hover:underline flex items-center"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                    View legal source
+                  </a>
+                </div>
+              )}
+            </div>
+          </div>
+        </motion.div>
+      ))}
+      {(!missingClauses || missingClauses.length === 0) && (
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="text-center py-12 bg-green-50 rounded-lg border border-green-100"
+        >
+          <CheckCircle className="h-14 w-14 text-green-500 mx-auto mb-4" />
+          <p className="text-green-800 font-medium text-lg">No missing clauses detected!</p>
+          <p className="text-green-600 mt-2">Your lease appears to include all important standard clauses.</p>
         </motion.div>
       )}
     </motion.div>
