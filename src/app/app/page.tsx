@@ -334,98 +334,106 @@ export default function AppPage() {
   );
 
   // Component for displaying missing clauses
-  const MissingClausesSection = ({ missingClauses }: { missingClauses?: MissingClause[] }) => (
-    <motion.div 
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="space-y-5"
-    >
-      {missingClauses && missingClauses.length > 0 && (
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="bg-indigo-50 p-4 rounded-lg border border-indigo-100 mb-2"
-        >
-          <div className="flex items-start">
-            <Info className="h-5 w-5 text-indigo-600 mt-0.5 mr-3 flex-shrink-0" />
-            <p className="text-sm text-indigo-700">
-              These are important clauses that should be in your lease but appear to be missing. 
-              The absence of these clauses could affect your rights or lead to misunderstandings.
-            </p>
-          </div>
-        </motion.div>
-      )}
-      
-      {missingClauses && missingClauses.map((clause, index) => (
-        <motion.div 
-          key={index}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3, delay: index * 0.05 }}
-          whileHover={{ scale: 1.01, boxShadow: '0 4px 12px rgba(0,0,0,0.05)' }}
-          className="bg-purple-50 border-l-4 border-purple-400 p-5 rounded-lg transition-all duration-200"
-        >
-          <div className="flex items-start">
-            <div className="flex-shrink-0">
-              <AlertCircle className="h-5 w-5 text-purple-500" />
+  const MissingClausesSection = ({ missingClauses }: { missingClauses?: MissingClause[] }) => {
+    // Filter out duplicate entries by rule_id
+    const uniqueMissingClauses = missingClauses ? 
+      Array.from(new Map(missingClauses.map(clause => [clause.rule_id, clause])).values()) 
+      : [];
+    
+    return (
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="space-y-5"
+      >
+        {uniqueMissingClauses && uniqueMissingClauses.length > 0 && (
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+            className="bg-purple-50/70 p-5 rounded-lg border border-purple-200 mb-6"
+          >
+            <div className="flex items-start">
+              <Info className="h-5 w-5 text-indigo-600 mt-0.5 mr-3 flex-shrink-0" />
+              <p className="text-sm text-indigo-700">
+                These are important clauses that should be in your lease but appear to be missing. 
+                The absence of these clauses could affect your rights or lead to misunderstandings.
+              </p>
             </div>
-            <div className="ml-3">
-              <h3 className="text-sm font-medium text-purple-800">{clause.title}</h3>
-              <div className="mt-2 text-sm text-purple-700">
-                <p>{clause.explanation}</p>
+          </motion.div>
+        )}
+        
+        {uniqueMissingClauses && uniqueMissingClauses.map((clause, index) => (
+          <motion.div 
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3, delay: index * 0.05 }}
+            whileHover={{ scale: 1.01, boxShadow: '0 4px 12px rgba(0,0,0,0.05)' }}
+            className="bg-purple-50 border-l-4 border-purple-400 p-5 rounded-lg transition-all duration-200"
+          >
+            <div className="flex items-start">
+              <div className="flex-shrink-0">
+                <AlertCircle className="h-5 w-5 text-purple-500" />
               </div>
-              <div className="mt-2 text-xs text-purple-600 bg-purple-100 px-2 py-1 rounded-md inline-block">
-                <p>Reference: {clause.rule_id}</p>
+              <div className="ml-3">
+                <h3 className="text-sm font-medium text-purple-800">{clause.title}</h3>
+                <div className="mt-2 text-sm text-purple-700">
+                  <p>{clause.explanation}</p>
+                </div>
+                <div className="mt-2 text-xs text-purple-600 bg-purple-100 px-2 py-1 rounded-md inline-block">
+                  <p>Reference: {clause.rule_id}</p>
+                </div>
+                {clause.recommendation && (
+                  <div className="mt-3 text-sm text-purple-700 bg-purple-50 p-2 border border-purple-200 rounded">
+                    <strong>Recommended action:</strong> {clause.recommendation}
+                  </div>
+                )}
+                {clause.severity && (
+                  <div className="mt-2 text-xs inline-flex items-center">
+                    <span className={`px-2 py-1 rounded-full ${
+                      clause.severity === 'High' ? 'bg-red-100 text-red-800' : 
+                      clause.severity === 'Medium' ? 'bg-orange-100 text-orange-800' : 
+                      'bg-yellow-100 text-yellow-800'
+                    }`}>
+                      {clause.severity} severity
+                    </span>
+                  </div>
+                )}
+                {clause.legal_url && (
+                  <div className="mt-2">
+                    <a 
+                      href={clause.legal_url} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-sm text-indigo-600 hover:text-indigo-800 hover:underline flex items-center"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                      View legal source
+                    </a>
+                  </div>
+                )}
               </div>
-              {clause.recommendation && (
-                <div className="mt-3 text-sm text-purple-700 bg-purple-50 p-2 border border-purple-200 rounded">
-                  <strong>Recommended action:</strong> {clause.recommendation}
-                </div>
-              )}
-              {clause.severity && (
-                <div className="mt-2 text-xs inline-flex items-center">
-                  <span className={`px-2 py-1 rounded-full ${
-                    clause.severity === 'High' ? 'bg-red-100 text-red-800' : 
-                    clause.severity === 'Medium' ? 'bg-orange-100 text-orange-800' : 
-                    'bg-yellow-100 text-yellow-800'
-                  }`}>
-                    {clause.severity} severity
-                  </span>
-                </div>
-              )}
-              {clause.legal_url && (
-                <div className="mt-2">
-                  <a 
-                    href={clause.legal_url} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="text-sm text-indigo-600 hover:text-indigo-800 hover:underline flex items-center"
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                    </svg>
-                    View legal source
-                  </a>
-                </div>
-              )}
             </div>
-          </div>
-        </motion.div>
-      ))}
-      {(!missingClauses || missingClauses.length === 0) && (
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="text-center py-12 bg-green-50 rounded-lg border border-green-100"
-        >
-          <CheckCircle className="h-14 w-14 text-green-500 mx-auto mb-4" />
-          <p className="text-green-800 font-medium text-lg">No missing clauses detected!</p>
-          <p className="text-green-600 mt-2">Your lease appears to include all important standard clauses.</p>
-        </motion.div>
-      )}
-    </motion.div>
-  );
+          </motion.div>
+        ))}
+        {(!uniqueMissingClauses || uniqueMissingClauses.length === 0) && (
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="text-center py-12 bg-green-50 rounded-lg border border-green-100"
+          >
+            <CheckCircle className="h-14 w-14 text-green-500 mx-auto mb-4" />
+            <p className="text-green-800 font-medium text-lg">No missing clauses detected!</p>
+            <p className="text-green-600 mt-2">Your lease appears to include all important standard clauses.</p>
+          </motion.div>
+        )}
+      </motion.div>
+    );
+  };
 
   // Component for displaying good to know items
   const GoodToKnowSection = ({ goodToKnow }: { goodToKnow: GoodToKnow[] }) => (
@@ -641,21 +649,36 @@ export default function AppPage() {
                       >
                         Key Terms
                       </button>
-                                              <button
-                          onClick={() => setActiveSection('alerts')}
-                          className={`px-6 py-4 text-sm font-medium font-google-sans transition-all duration-200 ${
-                            activeSection === 'alerts'
-                              ? 'border-b-2 border-indigo-600 text-indigo-600 bg-white -mb-px'
-                              : 'text-gray-500 hover:text-gray-700'
-                          }`}
-                        >
-                          Legal Insights
-                          {result.alerts.length > 0 && (
-                            <span className="ml-2 bg-amber-100 text-amber-800 text-xs font-medium px-2.5 py-0.5 rounded-full">
-                              {result.alerts.length}
-                            </span>
-                          )}
-                        </button>
+                      <button
+                        onClick={() => setActiveSection('alerts')}
+                        className={`px-6 py-4 text-sm font-medium font-google-sans transition-all duration-200 ${
+                          activeSection === 'alerts'
+                            ? 'border-b-2 border-indigo-600 text-indigo-600 bg-white -mb-px'
+                            : 'text-gray-500 hover:text-gray-700'
+                        }`}
+                      >
+                        Legal Insights
+                        {result.alerts.length > 0 && (
+                          <span className="ml-2 bg-amber-100 text-amber-800 text-xs font-medium px-2.5 py-0.5 rounded-full">
+                            {result.alerts.length}
+                          </span>
+                        )}
+                      </button>
+                      <button
+                        onClick={() => setActiveSection('missing_clauses')}
+                        className={`px-6 py-4 text-sm font-medium font-google-sans transition-all duration-200 ${
+                          activeSection === 'missing_clauses'
+                            ? 'border-b-2 border-indigo-600 text-indigo-600 bg-white -mb-px'
+                            : 'text-gray-500 hover:text-gray-700'
+                        }`}
+                      >
+                        Missing Clauses
+                        {result.missing_clauses && result.missing_clauses.length > 0 && (
+                          <span className="ml-2 bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded-full">
+                            {result.missing_clauses.length}
+                          </span>
+                        )}
+                      </button>
                       <button
                         onClick={() => setActiveSection('good_to_know')}
                         className={`px-6 py-4 text-sm font-medium font-google-sans transition-all duration-200 ${
@@ -678,6 +701,7 @@ export default function AppPage() {
                     <AnimatePresence mode="wait">
                       {activeSection === 'key_terms' && <KeyTermsSection keyTerms={result.key_terms} />}
                       {activeSection === 'alerts' && <AlertsSection alerts={result.alerts} />}
+                      {activeSection === 'missing_clauses' && <MissingClausesSection missingClauses={result.missing_clauses || []} />}
                       {activeSection === 'good_to_know' && <GoodToKnowSection goodToKnow={result.good_to_know} />}
                     </AnimatePresence>
                   </div>

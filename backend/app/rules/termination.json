@@ -6,107 +6,114 @@
     "summary": "Specific notice periods apply depending on how long you've been renting and who is terminating the tenancy.",
     "explanation": "The notice period depends on how long you've been renting. For tenancies of less than 6 months, 28 days' notice is required. For 6 months to 1 year, 35 days. For 1-2 years, 42 days. For 2-3 years, 56 days. For 3-4 years, 84 days. For 4-5 years, 112 days. For 5+ years, 140 days.",
     "legal_reference": "Residential Tenancies Act 2004",
+    "legal_url": "https://www.rtb.ie/renting/rights-responsibilities",
     "keywords": ["termination", "notice period", "eviction", "end tenancy", "notice to quit"],
     "alert_if_found": [
       "immediate termination",
-      "no notice period",
-      "termination without notice",
       "eviction without notice",
-      "termination at landlord's discretion"
+      "termination without proper notice",
+      "shorter notice period",
+      "insufficient notice"
     ],
     "compliant_examples": [
-      "28 days' notice required for termination",
-      "Proper notice period as per legislation",
-      "Termination with appropriate notice"
+      "Termination requires notice periods as specified by the Residential Tenancies Act",
+      "Notice periods will be in accordance with current legislation",
+      "Landlord will provide legally required notice periods based on tenancy duration"
     ],
     "non_compliant_examples": [
-      "Immediate termination permitted",
-      "No notice period required",
-      "Termination at any time"
+      "Landlord may terminate with 14 days' notice regardless of tenancy duration",
+      "Tenant must vacate within one week if requested",
+      "Landlord reserves the right to shorten notice periods"
     ],
-    "recommended_action": "Ensure the lease specifies the correct notice period based on your tenancy duration. If it allows immediate termination, discuss this with your landlord and request the clause be amended. If they refuse, you can challenge this through the RTB.",
-    "severity": "High"
+    "recommended_action": "If your lease contains incorrect notice periods, inform your landlord that these clauses are unenforceable. The statutory notice periods in the Residential Tenancies Act apply regardless of what's in the lease.",
+    "severity": "High",
+    "source_url": "https://www.rtb.ie/renting/rights-responsibilities"
   },
   {
     "rule_id": "TERM002",
-    "topic": "Landlord Access Rights",
-    "category": "Access",
-    "summary": "Landlords have limited rights to access the property and must give reasonable notice.",
-    "explanation": "Your landlord can only enter the property for specific reasons (repairs, inspections, showing to prospective tenants) and must give you reasonable notice (usually 24 hours). They cannot enter without your permission except in emergencies.",
+    "topic": "Access During Notice Period",
+    "category": "Termination",
+    "summary": "Landlords must still give proper notice for entry during the notice period.",
+    "explanation": "Even after a notice of termination has been served, your landlord must still give you reasonable notice (typically 24 hours) before entering the property for viewings or inspections.",
     "legal_reference": "Residential Tenancies Act 2004",
-    "keywords": ["landlord access", "entry rights", "inspection", "repairs", "notice", "privacy"],
+    "legal_url": "https://www.rtb.ie/renting/rights-responsibilities/landlord-rights-responsibilities",
+    "keywords": ["access during notice", "viewings", "notice period entry", "property inspection", "termination access"],
     "alert_if_found": [
-      "landlord can enter at any time",
-      "no notice required for entry",
-      "landlord has unlimited access",
-      "entry without permission",
-      "24/7 access for landlord"
+      "unlimited access during notice period",
+      "landlord may enter at any time after notice",
+      "unrestricted viewings",
+      "no notice required for entry after termination notice"
     ],
     "compliant_examples": [
-      "24 hours' notice required for entry",
-      "Access only for repairs and inspections",
-      "Reasonable notice for landlord visits"
+      "Landlord will give 24 hours' notice for viewings during notice period",
+      "Property viewings by appointment only",
+      "Reasonable notice required for all access during notice period"
     ],
     "non_compliant_examples": [
-      "Landlord can enter at any time",
-      "No notice required for access",
-      "Unlimited access for landlord"
+      "Landlord may enter at any time for viewings once notice is served",
+      "Tenant must allow access for viewings without further notice",
+      "Unrestricted access for showing property to prospective tenants"
     ],
-    "recommended_action": "Your landlord cannot enter your home without permission except in an emergency. You can politely refuse entry if they show up without giving at least 24 hours' notice. If they persist, contact the RTB.",
-    "severity": "High"
+    "recommended_action": "If your lease allows unlimited access during the notice period, inform your landlord that they must still provide reasonable notice (typically 24 hours) before entering for viewings or inspections.",
+    "severity": "Medium",
+    "source_url": "https://www.rtb.ie/renting/rights-responsibilities/landlord-rights-responsibilities"
   },
   {
     "rule_id": "TERM003",
-    "topic": "Tenant's Right to Quiet Enjoyment",
-    "category": "Access",
-    "summary": "You have the right to quiet enjoyment of the property without unreasonable interference.",
-    "explanation": "You have the right to live in the property without unreasonable interference from your landlord. This includes the right to privacy and to use the property as your home.",
+    "topic": "Tenant Obligations During Notice Period",
+    "category": "Termination",
+    "summary": "Tenants must continue to pay rent and follow the lease terms during the notice period.",
+    "explanation": "During the notice period, you must continue to pay rent and comply with all terms of your lease until the termination date. Failure to do so could result in loss of deposit or other penalties.",
     "legal_reference": "Residential Tenancies Act 2004",
-    "keywords": ["quiet enjoyment", "privacy", "interference", "peaceful occupation"],
+    "legal_url": "https://www.rtb.ie/renting/rights-responsibilities/tenant-rights-responsibilities",
+    "keywords": ["notice period obligations", "rent during notice", "tenant responsibilities", "final rent payment", "notice period compliance"],
     "alert_if_found": [
-      "landlord can interfere with quiet enjoyment",
-      "no right to privacy",
-      "landlord can enter without reason",
-      "unlimited landlord interference"
+      "rent stops immediately upon notice",
+      "deposit serves as last month's rent",
+      "no obligations after notice given",
+      "tenant may leave early without penalty"
     ],
     "compliant_examples": [
-      "Tenant has right to quiet enjoyment",
-      "Respect for tenant privacy",
-      "No unreasonable interference"
+      "Tenant must continue to pay rent until the termination date",
+      "All lease terms remain in effect during notice period",
+      "Rent and utilities must be paid in full until move-out date"
     ],
     "non_compliant_examples": [
-      "Landlord can interfere with quiet enjoyment",
-      "No right to privacy guaranteed",
-      "Unlimited landlord access"
+      "Deposit will be used as final month's rent",
+      "Tenant may cease paying rent once notice is given",
+      "Lease terms end when notice is served"
     ],
-    "recommended_action": "Ensure the lease respects your right to quiet enjoyment and privacy. If it allows unreasonable interference, discuss this with your landlord. Document any interference and contact the RTB if it continues.",
-    "severity": "Medium"
+    "recommended_action": "Continue paying rent and following all lease terms until the termination date. Keep records of all payments and communications during the notice period.",
+    "severity": "Medium",
+    "source_url": "https://www.rtb.ie/renting/rights-responsibilities/tenant-rights-responsibilities"
   },
   {
     "rule_id": "TERM004",
-    "topic": "Termination for Breach of Tenancy",
+    "topic": "Valid Grounds for Termination",
     "category": "Termination",
-    "summary": "Tenancies can be terminated for serious breaches, but proper procedures must be followed.",
-    "explanation": "A tenancy can be terminated for serious breaches like non-payment of rent, anti-social behavior, or damage to the property. However, proper notice and procedures must be followed.",
-    "legal_reference": "Residential Tenancies Act 2004",
-    "keywords": ["breach", "termination", "anti-social behavior", "damage", "non-payment"],
+    "summary": "Landlords can only end a tenancy after 6 months for specific legal reasons.",
+    "explanation": "After the first 6 months of a tenancy, a landlord can only end the tenancy for specific reasons, such as selling the property, needing it for their own use, significant renovation, change of use, or breach of tenant obligations.",
+    "legal_reference": "Residential Tenancies Act 2004 (as amended)",
+    "legal_url": "https://www.rtb.ie/renting/rights-responsibilities",
+    "keywords": ["grounds for termination", "valid reasons", "termination justification", "lawful termination", "end tenancy reasons"],
     "alert_if_found": [
-      "termination for minor breaches",
-      "immediate termination for any breach",
-      "termination without proper procedures",
-      "eviction for trivial reasons"
+      "landlord may terminate without reason",
+      "termination at landlord's discretion",
+      "no cause eviction",
+      "termination without specific grounds"
     ],
     "compliant_examples": [
-      "Termination only for serious breaches",
-      "Proper procedures for breach termination",
-      "Reasonable opportunity to remedy breach"
+      "Landlord may terminate for reasons specified in the Residential Tenancies Act",
+      "Termination requires valid grounds after 6 months of tenancy",
+      "Notice must state the specific legal ground for termination"
     ],
     "non_compliant_examples": [
-      "Termination for minor breaches",
-      "Immediate termination for any breach",
-      "No opportunity to remedy breach"
+      "Landlord reserves the right to terminate at any time without reason",
+      "Tenancy may be ended at landlord's sole discretion",
+      "Landlord may terminate without specifying grounds"
     ],
-    "recommended_action": "Ensure the lease only allows termination for serious breaches and includes proper procedures. If it allows termination for minor issues, discuss this with your landlord and request the clause be amended.",
-    "severity": "High"
+    "recommended_action": "If your landlord tries to end your tenancy without specifying a valid legal ground, challenge the notice through the RTB dispute resolution process. A termination notice without a valid ground is not legally enforceable after 6 months of tenancy.",
+    "severity": "High",
+    "source_url": "https://www.rtb.ie/renting/rights-responsibilities"
   }
 ] 

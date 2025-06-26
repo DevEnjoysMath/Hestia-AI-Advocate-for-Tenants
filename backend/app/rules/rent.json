@@ -6,106 +6,114 @@
     "summary": "In Rent Pressure Zones, rent can only increase by a maximum of 2% per year or HICP inflation, whichever is lower.",
     "explanation": "Rent Pressure Zones are areas where rent increases are capped. The maximum annual increase is 2% or the rate of inflation (HICP), whichever is lower. Rent can only be reviewed once every 12 months.",
     "legal_reference": "Residential Tenancies Act 2004 (as amended by Planning and Development (Housing) and Residential Tenancies Act 2016)",
+    "legal_url": "https://www.rtb.ie/renting/rights-responsibilities",
     "keywords": ["rent increase", "rent pressure zone", "rpz", "2%", "inflation", "hicp", "annual increase"],
     "alert_if_found": [
-      "rent increase greater than 2%",
-      "rent increase above inflation",
+      "rent increase above 2%",
+      "increase above inflation",
       "rent review more than once per year",
-      "rent increase at landlord's discretion",
-      "unlimited rent increases"
+      "unlimited rent increase",
+      "market rate adjustment"
     ],
     "compliant_examples": [
-      "Rent may increase by maximum 2% annually",
-      "Rent review once per 12 months",
-      "Increase limited to HICP or 2%, whichever is lower"
+      "Rent increases limited to 2% per year or HICP inflation, whichever is lower",
+      "Rent reviews once every 12 months",
+      "Rent increases in accordance with RPZ rules"
     ],
     "non_compliant_examples": [
-      "Rent may increase by 5% annually",
-      "Rent review every 6 months",
-      "Unlimited rent increases permitted"
+      "Rent may be increased to market rates annually",
+      "Landlord may increase rent by 5% each year",
+      "Rent reviews every 6 months"
     ],
-    "recommended_action": "If you're in a Rent Pressure Zone and the lease allows increases above 2% or more frequent reviews, inform your landlord this violates RPZ rules. If they proceed with an illegal increase, you can challenge it through the RTB.",
-    "severity": "High"
+    "recommended_action": "If your lease allows rent increases above the legal limit or more frequent than 12 months, inform your landlord that these clauses are unenforceable. The RPZ restrictions apply regardless of what's in the lease.",
+    "severity": "High",
+    "source_url": "https://www.rtb.ie/renting/rights-responsibilities"
   },
   {
     "rule_id": "RENT002",
-    "topic": "Rent Increase Notice Period",
+    "topic": "Rent Review Notice Requirements",
     "category": "Rent",
-    "summary": "Landlords must provide 90 days' notice before increasing rent.",
-    "explanation": "Your landlord must give you at least 90 days' written notice before increasing your rent. This gives you time to consider the increase and potentially negotiate or find alternative accommodation.",
-    "legal_reference": "Residential Tenancies Act 2004",
-    "keywords": ["rent increase notice", "90 days", "notice period", "written notice"],
+    "summary": "Landlords must give at least 90 days' written notice before increasing rent.",
+    "explanation": "Before increasing rent, your landlord must give you at least 90 days' written notice using the RTB's rent review form. The notice must include calculations showing how the new rent was determined.",
+    "legal_reference": "Residential Tenancies Act 2004 (as amended)",
+    "legal_url": "https://www.rtb.ie/renting/rights-responsibilities",
+    "keywords": ["rent increase", "notice period", "90 days", "rent review form", "written notice"],
     "alert_if_found": [
-      "rent increase with 30 days notice",
-      "rent increase with 60 days notice",
+      "rent increase with less than 90 days' notice",
+      "verbal rent increase",
       "immediate rent increase",
-      "no notice period specified"
+      "short notice for rent changes"
     ],
     "compliant_examples": [
-      "90 days' notice required for rent increase",
-      "Rent increase with 90 days' written notice",
-      "Three months' notice for rent changes"
+      "90 days' written notice required for rent increases",
+      "Rent increases with proper notice using RTB form",
+      "Advance written notice for rent reviews"
     ],
     "non_compliant_examples": [
-      "Rent increase with 30 days' notice",
-      "Immediate rent increase permitted",
-      "No notice period required"
+      "Rent may be increased with 30 days' notice",
+      "Verbal notification of rent increases",
+      "Immediate rent increases permitted"
     ],
-    "recommended_action": "Ensure the lease specifies a 90-day notice period for rent increases. If not, discuss this with your landlord and request the clause be amended. If they refuse, you can enforce this through the RTB.",
-    "severity": "High"
+    "recommended_action": "If your lease allows rent increases with less than 90 days' notice, inform your landlord that this clause is unenforceable. Rent increases without proper notice are invalid.",
+    "severity": "High",
+    "source_url": "https://www.rtb.ie/renting/rights-responsibilities"
   },
   {
     "rule_id": "RENT003",
     "topic": "Rent Payment Methods",
     "category": "Rent",
-    "summary": "Rent should be paid by a method that provides a clear record of payment.",
-    "explanation": "It's important to pay rent by a method that provides a clear record, such as bank transfer, standing order, or cheque. This helps protect you in case of disputes about rent payments.",
+    "summary": "Landlords must provide a rent payment method that provides a record of payment.",
+    "explanation": "Your landlord must provide a payment method that gives you a record of payment, such as electronic transfer, check, or receipt for cash. You should always keep records of all rent payments.",
     "legal_reference": "Residential Tenancies Act 2004",
-    "keywords": ["rent payment", "bank transfer", "standing order", "cheque", "cash payment"],
+    "legal_url": "https://www.rtb.ie/renting/rights-responsibilities",
+    "keywords": ["rent payment", "payment method", "receipt", "record of payment", "rent records"],
     "alert_if_found": [
-      "rent paid in cash only",
-      "no payment records required",
-      "cash payment preferred",
-      "no receipt for rent"
+      "cash only payments",
+      "no receipts provided",
+      "no record of payment",
+      "payment without documentation"
     ],
     "compliant_examples": [
-      "Rent paid by bank transfer",
-      "Standing order for rent payment",
-      "Cheque payment with receipt"
+      "Rent payable by bank transfer or check",
+      "Receipts provided for all payments",
+      "Records maintained of all rent transactions"
     ],
     "non_compliant_examples": [
-      "Cash payment only accepted",
-      "No payment records provided",
-      "Cash preferred over bank transfer"
+      "Cash payments only with no receipts",
+      "No documentation of payment required",
+      "Landlord not obligated to provide payment records"
     ],
-    "recommended_action": "Ensure you have a clear record of all rent payments. If the lease requires cash payments, discuss alternative payment methods with your landlord. Always keep receipts or bank statements as proof of payment.",
-    "severity": "Medium"
+    "recommended_action": "Always insist on a payment method that provides a record. If paying in cash, demand a signed and dated receipt. Keep all payment records for the duration of your tenancy.",
+    "severity": "Medium",
+    "source_url": "https://www.rtb.ie/renting/rights-responsibilities"
   },
   {
     "rule_id": "RENT004",
-    "topic": "Rent Arrears and Late Payment",
+    "topic": "Illegal Eviction for Refusing Rent Increase",
     "category": "Rent",
-    "summary": "Late rent payments can result in termination of the tenancy, but landlords must follow proper procedures.",
-    "explanation": "If you fall behind on rent, your landlord can take steps to terminate the tenancy, but they must follow proper legal procedures and give you reasonable time to pay the arrears.",
-    "legal_reference": "Residential Tenancies Act 2004",
-    "keywords": ["rent arrears", "late payment", "termination", "eviction", "notice period"],
+    "summary": "Landlords cannot evict tenants for refusing an illegal rent increase.",
+    "explanation": "If you refuse to pay a rent increase that exceeds legal limits or wasn't properly noticed, your landlord cannot evict you for this reason. Such an eviction would be illegal.",
+    "legal_reference": "Residential Tenancies Act 2004 (as amended)",
+    "legal_url": "https://www.rtb.ie/renting/rights-responsibilities",
+    "keywords": ["illegal eviction", "rent increase refusal", "retaliatory eviction", "wrongful termination", "eviction protection"],
     "alert_if_found": [
-      "immediate termination for late payment",
-      "no grace period for arrears",
-      "eviction without notice",
-      "immediate eviction for non-payment"
+      "eviction for refusing rent increase",
+      "termination for disputing rent",
+      "eviction for exercising rights",
+      "penalty for challenging rent"
     ],
     "compliant_examples": [
-      "14 days' notice for rent arrears",
-      "Reasonable time to pay arrears",
-      "Proper termination procedures followed"
+      "Tenant rights to dispute illegal rent increases protected",
+      "No eviction for exercising legal rights",
+      "Dispute resolution process for rent disagreements"
     ],
     "non_compliant_examples": [
-      "Immediate termination for late payment",
-      "No grace period for arrears",
-      "Eviction without proper notice"
+      "Termination if tenant refuses rent increase",
+      "Eviction for challenging rent amount",
+      "Lease termination for disputing charges"
     ],
-    "recommended_action": "If the lease allows immediate termination for late payment, discuss this with your landlord and request a reasonable grace period be included. If they refuse, you can challenge this through the RTB.",
-    "severity": "High"
+    "recommended_action": "If your landlord threatens eviction for refusing an illegal rent increase, contact the RTB immediately. Keep all communications and document the situation carefully.",
+    "severity": "High",
+    "source_url": "https://www.rtb.ie/renting/rights-responsibilities"
   }
 ] 

@@ -1,5 +1,5 @@
 import os
-from flask import request, jsonify
+from flask import request, jsonify, Response
 import google.generativeai as genai
 from PyPDF2 import PdfReader
 import json
@@ -276,37 +276,50 @@ def analyze_lease():
             # Check if the text indicates it's a scanned document
             if lease_text.startswith("WARNING: This appears to be a scanned document"):
                 logger.warning("Scanned document detected")
-                return jsonify({
+                result = {
                     "key_terms": {"note": "This appears to be a scanned document"},
                     "alerts": [],
+                    "missing_clauses": [],
                     "good_to_know": [{
                         "title": "Scanned Document Detected",
                         "explanation": "Your PDF appears to be a scanned document, which means we can't extract the text to analyze it. For best results, please upload a PDF with actual text content (not images of text)."
                     }]
-                })
+                }
+                # Add missing clauses check even for scanned documents
+                result = check_for_missing_clauses(result, lease_text, load_knowledge_base())
+                return jsonify(result)
             
             if not lease_text or len(lease_text.strip()) < 100:
                 logger.warning("PDF contains insufficient text")
-                return jsonify({
+                result = {
                     "key_terms": {"note": "Insufficient text found in your PDF"},
                     "alerts": [],
+                    "missing_clauses": [],
                     "good_to_know": [{
                         "title": "PDF Text Extraction Issue",
                         "explanation": "We couldn't extract enough text from your PDF to perform a proper analysis. This is usually because the PDF contains scanned images rather than actual text. Try uploading a PDF with selectable text or a different document."
                     }]
-                })
+                }
+                # Add missing clauses check even for insufficient text
+                result = check_for_missing_clauses(result, lease_text, load_knowledge_base())
+                print(f"DEBUG: Final result before return: {result}")
+                # Return a direct JSON response
+                return Response(json.dumps(result), mimetype='application/json')
             
             logger.info(f"Successfully extracted {len(lease_text)} characters from PDF")
         except Exception as pdf_err:
             logger.error(f"PDF extraction error: {str(pdf_err)}")
-            return jsonify({
+            result = {
                 "key_terms": {"error": "PDF extraction failed"},
                 "alerts": [],
                 "good_to_know": [{
                     "title": "PDF Reading Error",
                     "explanation": f"There was a problem reading your PDF: {str(pdf_err)}. Please ensure it's a valid PDF file with readable text."
                 }]
-            })
+            }
+            # Add empty missing clauses array for consistency
+            result["missing_clauses"] = []
+            return jsonify(result)
         
         # Generate prompt and get analysis from Gemini
         prompt = build_analysis_prompt(lease_text)
@@ -362,6 +375,9 @@ def analyze_lease():
             else:
                 response_text = response.text
                 
+            # Log the full response for debugging
+            logger.debug(f"Full response from AI: {response_text}")
+                
             # Try to clean up the response if it's not pure JSON
             response_text = response_text.strip()
             if response_text.startswith("```json"):
@@ -382,6 +398,11 @@ def analyze_lease():
                         "error": "The analysis was incomplete. Please try again.",
                         "partial_result": analysis
                     }), 500
+                
+                # Remove any existing missing_clauses from the AI response
+                if "missing_clauses" in analysis:
+                    logger.info("Removing existing missing_clauses from AI response")
+                    analysis.pop("missing_clauses", None)
                 
                 # Check for missing clauses
                 analysis = check_for_missing_clauses(analysis, lease_text, load_knowledge_base())
@@ -427,15 +448,30 @@ def check_for_missing_clauses(result: dict, lease_text: str, knowledge_base: lis
     Returns:
         dict: The updated analysis result with missing clauses.
     """
-    # Initialize missing_clauses if it doesn't exist
-    if "missing_clauses" not in result:
-        result["missing_clauses"] = []
+    print("DEBUG: check_for_missing_clauses function called")
+    
+    # Always start with a fresh missing_clauses array
+    result["missing_clauses"] = []
+    print("DEBUG: Reset missing_clauses field")
+    
+    # Track processed rule_ids to avoid duplicates
+    processed_rule_ids = set()
     
     # Get rules that have alert_if_missing field
     missing_clause_rules = [rule for rule in knowledge_base if "alert_if_missing" in rule]
+    print(f"DEBUG: Found {len(missing_clause_rules)} rules with alert_if_missing field")
     
     # Check each rule for missing clauses
     for rule in missing_clause_rules:
+        rule_id = rule.get("rule_id", "")
+        
+        # Skip if we've already processed this rule_id
+        if rule_id in processed_rule_ids:
+            print(f"DEBUG: Skipping duplicate rule_id: {rule_id}")
+            continue
+            
+        processed_rule_ids.add(rule_id)
+            
         # Check if any of the keywords are present in the lease text
         keywords_present = any(keyword.lower() in lease_text.lower() for keyword in rule.get("alert_if_missing", []))
         
@@ -443,7 +479,7 @@ def check_for_missing_clauses(result: dict, lease_text: str, knowledge_base: lis
         if not keywords_present:
             # Create a missing clause alert
             missing_clause = {
-                "rule_id": rule.get("rule_id", ""),
+                "rule_id": rule_id,
                 "title": f"Missing: {rule.get('topic', '')}",
                 "explanation": rule.get("explanation", ""),
                 "severity": rule.get("severity", "Medium"),
@@ -452,7 +488,9 @@ def check_for_missing_clauses(result: dict, lease_text: str, knowledge_base: lis
             }
             
             result["missing_clauses"].append(missing_clause)
+            print(f"DEBUG: Added missing clause: {rule_id}")
     
+    print(f"DEBUG: Returning result with {len(result['missing_clauses'])} missing clauses")
     return result
 
 @app.route('/api/check-rent', methods=['POST'])

@@ -6,6 +6,7 @@
     "summary": "The landlord is responsible for keeping the property in a good state of repair.",
     "explanation": "Your landlord must maintain the structure of the building, including the roof, walls, floors, and windows. They are also responsible for utilities like plumbing, gas, and electricity, as well as heating systems.",
     "legal_reference": "Section 12(1)(b) of the Residential Tenancies Act 2004",
+    "legal_url": "https://www.rtb.ie/renting/rights-responsibilities/landlord-rights-responsibilities",
     "keywords": ["repairs", "maintenance", "structure", "heating", "plumbing", "electrical", "utilities"],
     "alert_if_found": [
       "tenant is responsible for all repairs",
@@ -25,7 +26,8 @@
       "Tenant maintains heating system"
     ],
     "recommended_action": "Be aware this clause is unenforceable. You are not responsible for fixing the boiler, leaking pipes, or structural issues. Report all such problems to your landlord in writing. If they refuse to repair, you can contact the RTB.",
-    "severity": "High"
+    "severity": "High",
+    "source_url": "https://www.rtb.ie/renting/rights-responsibilities/landlord-rights-responsibilities"
   },
   {
     "rule_id": "REP002",
@@ -34,6 +36,7 @@
     "summary": "You should inform your landlord of any required repairs in writing.",
     "explanation": "When a repair is needed, you should notify your landlord or their agent as soon as possible. It is best to do this in writing (e.g., by email) so you have a record of when you reported the issue.",
     "legal_reference": "Residential Tenancies Act 2004",
+    "legal_url": "https://www.rtb.ie/renting/rights-responsibilities/tenant-rights-responsibilities",
     "keywords": ["notify", "report", "inform", "in writing", "repair request"],
     "alert_if_found": [
       "repairs must be reported verbally only",
@@ -51,7 +54,8 @@
       "Repairs reported when convenient"
     ],
     "recommended_action": "Always report repairs in writing (email or letter) and keep copies. This creates a record if the landlord doesn't respond. Send follow-up emails if repairs aren't done within a reasonable time.",
-    "severity": "Low"
+    "severity": "Low",
+    "source_url": "https://www.rtb.ie/renting/rights-responsibilities/tenant-rights-responsibilities"
   },
   {
     "rule_id": "REP003",
@@ -60,6 +64,7 @@
     "summary": "Emergency repairs must be addressed immediately by the landlord.",
     "explanation": "Emergency repairs (like burst pipes, electrical faults, or heating failures in winter) must be addressed immediately by the landlord. You should contact them immediately for such issues.",
     "legal_reference": "Residential Tenancies Act 2004",
+    "legal_url": "https://www.rtb.ie/renting/rights-responsibilities/landlord-rights-responsibilities",
     "keywords": ["emergency", "urgent", "immediate", "burst pipe", "electrical fault", "heating failure"],
     "alert_if_found": [
       "emergency repairs at tenant's expense",
@@ -78,7 +83,8 @@
       "Emergency response not guaranteed"
     ],
     "recommended_action": "Ensure the lease provides clear emergency contact information and confirms the landlord's responsibility for emergency repairs. If not, request this information in writing.",
-    "severity": "High"
+    "severity": "High",
+    "source_url": "https://www.rtb.ie/renting/rights-responsibilities/landlord-rights-responsibilities"
   },
   {
     "rule_id": "REP004",
@@ -87,6 +93,7 @@
     "summary": "Tenants are responsible for minor maintenance and keeping the property clean.",
     "explanation": "While landlords are responsible for structural repairs, tenants are responsible for keeping the property clean and carrying out minor maintenance like changing light bulbs or unblocking drains caused by normal use.",
     "legal_reference": "Residential Tenancies Act 2004",
+    "legal_url": "https://www.rtb.ie/renting/rights-responsibilities/tenant-rights-responsibilities",
     "keywords": ["minor maintenance", "cleaning", "light bulbs", "drains", "normal use"],
     "alert_if_found": [
       "tenant responsible for all maintenance",
@@ -104,6 +111,7 @@
       "Tenant maintains all systems"
     ],
     "recommended_action": "Ensure the lease clearly distinguishes between landlord responsibilities (structural repairs) and tenant responsibilities (minor maintenance and cleaning). If unclear, ask for clarification in writing.",
-    "severity": "Medium"
+    "severity": "Medium",
+    "source_url": "https://www.rtb.ie/renting/rights-responsibilities/tenant-rights-responsibilities"
   }
 ] 
