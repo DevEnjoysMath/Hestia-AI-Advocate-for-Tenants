@@ -5,7 +5,9 @@ import FileUpload from '../../components/FileUpload';
 import RentChecker from '../../components/RentChecker';
 import RepairRequestAssistant from '../../components/RepairRequestAssistant';
 import DepositDisputeKit from '../../components/DepositDisputeKit';
-import { AlertCircle, CheckCircle, Info, FileText, TrendingUp, Wrench, DollarSign, HomeIcon, Shield } from 'lucide-react';
+import { ToastContainer, useToast } from '../../components/Toast';
+import { exportAnalysisAsText, copyAnalysisToClipboard } from '../../utils/exportPDF';
+import { AlertCircle, CheckCircle, Info, FileText, TrendingUp, Wrench, DollarSign, HomeIcon, Shield, Download, Copy } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 
@@ -54,6 +56,7 @@ export default function AppPage() {
   const [error, setError] = useState<string | null>(null);
   const [activeSection, setActiveSection] = useState<'key_terms' | 'alerts' | 'missing_clauses' | 'good_to_know'>('key_terms');
   const [activeFeature, setActiveFeature] = useState<'lease_analyzer' | 'rent_checker' | 'repair_assistant' | 'deposit_dispute'>('lease_analyzer');
+  const { toasts, addToast, removeToast } = useToast();
 
   const handleFileUpload = async (file: File) => {
     setIsUploading(true);
@@ -179,11 +182,36 @@ export default function AppPage() {
 
       console.log('Validated analysis result:', validatedResult);
       setResult(validatedResult);
+      addToast('Analysis completed successfully!', 'success');
     } catch (error) {
       console.error('Error uploading file:', error);
-      setError('Error connecting to the analysis service. Please ensure the backend is running and try again.');
+      const errorMessage = 'Error connecting to the analysis service. Please ensure the backend is running and try again.';
+      setError(errorMessage);
+      addToast(errorMessage, 'error');
     } finally {
       setIsUploading(false);
+    }
+  };
+
+  const handleExportReport = () => {
+    if (!result) return;
+    try {
+      exportAnalysisAsText(result);
+      addToast('Report downloaded successfully!', 'success');
+    } catch (error) {
+      console.error('Error exporting report:', error);
+      addToast('Failed to export report', 'error');
+    }
+  };
+
+  const handleCopyToClipboard = async () => {
+    if (!result) return;
+    try {
+      await copyAnalysisToClipboard(result);
+      addToast('Summary copied to clipboard!', 'success');
+    } catch (error) {
+      console.error('Error copying to clipboard:', error);
+      addToast('Failed to copy to clipboard', 'error');
     }
   };
 
@@ -510,6 +538,7 @@ export default function AppPage() {
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-indigo-50/50 via-white to-white font-roboto">
+      <ToastContainer toasts={toasts} removeToast={removeToast} />
       <div className="max-w-6xl mx-auto px-4 py-8 md:px-8 md:py-12">
         {/* Header with Home Link */}
         <div className="flex justify-between items-center mb-10">
@@ -706,7 +735,7 @@ export default function AppPage() {
                     </AnimatePresence>
                   </div>
                   
-                  <div className="px-8 py-5 bg-gray-50 border-t border-gray-200 flex justify-between items-center">
+                  <div className="px-8 py-5 bg-gray-50 border-t border-gray-200 flex flex-wrap justify-between items-center gap-3">
                     <button
                       onClick={() => {
                         setResult(null);
@@ -716,14 +745,22 @@ export default function AppPage() {
                     >
                       Analyze Another Lease
                     </button>
-                    <button
-                      className="px-5 py-2.5 text-sm font-medium text-white bg-indigo-600 rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 shadow-sm transition-colors flex items-center"
-                    >
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                      </svg>
-                      Download Report
-                    </button>
+                    <div className="flex gap-2">
+                      <button
+                        onClick={handleCopyToClipboard}
+                        className="px-5 py-2.5 text-sm font-medium text-indigo-700 bg-indigo-50 border border-indigo-200 rounded-lg hover:bg-indigo-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors flex items-center"
+                      >
+                        <Copy className="h-4 w-4 mr-2" />
+                        Copy Summary
+                      </button>
+                      <button
+                        onClick={handleExportReport}
+                        className="px-5 py-2.5 text-sm font-medium text-white bg-indigo-600 rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 shadow-sm transition-colors flex items-center"
+                      >
+                        <Download className="h-4 w-4 mr-2" />
+                        Download Report
+                      </button>
+                    </div>
                   </div>
                 </motion.div>
               )}
