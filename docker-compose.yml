@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  hestia:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: hestia-app
+    ports:
+      - "3002:3002"  # Frontend
+      - "8001:8001"  # Backend
+    environment:
+      - NODE_ENV=production
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+    env_file:
+      - backend/.env
+    volumes:
+      # Mount source code for development
+      - ./backend:/app/backend
+      - ./src:/app/src
+      - ./public:/app/public
+      # Prevent overwriting node_modules and build artifacts
+      - /app/node_modules
+      - /app/.next
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8001/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Optional: Redis for caching (for future use)
+  redis:
+    image: redis:7-alpine
+    container_name: hestia-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  redis-data:
+
+networks:
+  default:
+    name: hestia-network
